@@ -1,10 +1,12 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from recipe.views import RecipeListView
+from lib.views import IndexTemplateView 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    
-    path('', RecipeListView.as_view(),name="index"),
+	path('admin/', admin.site.urls),
+
+	path('', IndexTemplateView.as_view(), name="index"),
+	path('recipe/', include("recipe.urls")),
 ]
+
